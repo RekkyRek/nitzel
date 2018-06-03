@@ -1,12 +1,23 @@
-class DistanceTester {
+class PhysicsTester {
 	constructor() {
-		this.first = new Rect(250, 350, 24, 24, "red")
+		this.first = new Rect(0, 0, 24, 24, "red")
 		this.second = new Rect(550, 200, 24, 24, "green")
 		this.distText = new Text("dist", 100, 100, 14, "blue")
+		this.vel = {x: 0, y: 0}
+		this.damp = 0.97
 	}
 
 	draw(ctx, renderer) {
-		this.first.move(renderer.mouse.x,renderer.mouse.y)
+		this.second.move(renderer.mouse.x, renderer.mouse.y)
+		this.first.move(this.first.absx + this.vel.x, this.first.absy + this.vel.y)
+
+		this.vel.x += (this.second.x - this.first.x) / 200
+		this.vel.y += (this.second.y - this.first.y) / 100
+		this.vel.y += 0.98
+
+		this.vel.y *= this.damp
+		this.vel.x *= this.damp
+
 		this.first.draw(ctx)
 		this.second.draw(ctx)
 		ctx.beginPath()
@@ -25,5 +36,5 @@ class DistanceTester {
 
 const renderer = new Renderer()
 
-renderer.objects.push(new DistanceTester())
+renderer.objects.push(new PhysicsTester())
 renderer.objects.push(new FPS())
