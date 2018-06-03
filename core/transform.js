@@ -1,13 +1,17 @@
 class Transform {
 	constructor(x, y, h, w) {
-		this.x = x
-		this.y = y
+		this.absx = x
+		this.absy = y
+		this.x = x - w / 2
+		this.y = y - h / 2
 		this.h = h
 		this.w = w
 	}
 	move(x, y) {
-		this.x = x
-		this.y = y
+		this.absx = x
+		this.absy = y
+		this.x = x - this.w / 2
+		this.y = y - this.h / 2
 	}
 	size(h, w) {
 		this.h = h

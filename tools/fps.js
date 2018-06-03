@@ -2,7 +2,9 @@ class FPS {
 	constructor() {
 		this.lastFramtime = performance.now()
 		this.lastRender = performance.now()
-		this.textElement = new Text("fps", 0, 14, 14, "#000000")
+		this.textElement = new Text("fps", 0, 0, 14, "#000000")
+		this.textElement.y = 14
+		this.textElement.x = 0
 	}
 
 	draw (ctx) {
