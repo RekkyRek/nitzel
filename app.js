@@ -3,23 +3,19 @@ class PhysicsTester {
 		this.first = new Rect(0, 0, 24, 24, "red")
 		this.second = new Rect(550, 200, 24, 24, "green")
 		this.distText = new Text("dist", 100, 100, 14, "blue")
-		this.vel = {x: 0, y: 0}
-		this.damp = 0.97
+		this.rigidbody = new Rigidbody(0.98, 0.97)
 	}
 
 	draw(ctx, renderer) {
 		this.second.move(renderer.mouse.x, renderer.mouse.y)
-		this.first.move(this.first.absx + this.vel.x, this.first.absy + this.vel.y)
 
-		this.vel.x += (this.second.x - this.first.x) / 200
-		this.vel.y += (this.second.y - this.first.y) / 100
-		this.vel.y += 0.98
-
-		this.vel.y *= this.damp
-		this.vel.x *= this.damp
+		this.rigidbody.addForce((this.second.x - this.first.x) / 200, (this.second.y - this.first.y) / 100)
+		this.rigidbody.physicsTick()
+		this.rigidbody.apply(this.first)
 
 		this.first.draw(ctx)
 		this.second.draw(ctx)
+
 		ctx.beginPath()
 		ctx.moveTo(this.first.absx, this.first.absy)
 		ctx.lineTo(this.second.absx, this.second.absy)
