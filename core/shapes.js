@@ -1,6 +1,6 @@
 class Rect extends Transform {
-	constructor(x, y, h, w, c) {
-		super(x, y, h, w)
+	constructor(x, y, w, h, c) {
+		super(x, y, w, h)
 		this.color = c
 	}
 	draw(ctx, renderer) {
@@ -8,9 +8,9 @@ class Rect extends Transform {
 			ctx.translate(this.absx, this.absy)
 			ctx.rotate(this.r / 10 * Math.PI/180)
 			ctx.fillStyle = this.color
-			ctx.fillRect(-this.w / 2, -this.h / 2, this.h, this.w)
+			ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h)
 			ctx.restore()
-		
+
 	}
 }
 

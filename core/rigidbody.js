@@ -24,8 +24,21 @@ class Rigidbody {
 		transform.rotate(this.rotateVelocity)
 	}
 
-	physicsTick() {
+	physicsTick(transform, colliders) {
+		let tmp = transform.collider
+
 		this.velocity.y += this.gravity
+
+		if(transform.collider) {
+			transform.collider.collide(colliders)
+		}
+
+		if(transform.collider.collided) {
+			this.velocity.y = -transform.collider.ypush
+			this.velocity.x = -transform.collider.xpush
+		}
+
+		transform.collider = tmp
 
 		// this.rotateVelocity = Math.log(Math.abs(this.velocity.x * this.velocity.y)) * 10
 		this.velocity.x *= this.damp
