@@ -4,6 +4,7 @@ class Transform {
 		this.absy = y
 		this.x = x - w / 2
 		this.y = y - h / 2
+		this.r = 0
 		this.h = h
 		this.w = w
 	}
@@ -12,6 +13,9 @@ class Transform {
 		this.absy = y
 		this.x = x - this.w / 2
 		this.y = y - this.h / 2
+	}
+	rotate(r) {
+		this.r = r
 	}
 	size(h, w) {
 		this.h = h

@@ -3,9 +3,14 @@ class Rect extends Transform {
 		super(x, y, h, w)
 		this.color = c
 	}
-	draw(ctx) {
-		ctx.fillStyle = this.color
-		ctx.fillRect(this.x, this.y, this.h, this.w)
+	draw(ctx, renderer) {
+			ctx.save()
+			ctx.translate(this.absx, this.absy)
+			ctx.rotate(this.r / 10 * Math.PI/180)
+			ctx.fillStyle = this.color
+			ctx.fillRect(-this.w / 2, -this.h / 2, this.h, this.w)
+			ctx.restore()
+		
 	}
 }
 

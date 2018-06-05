@@ -13,8 +13,8 @@ class PhysicsTester {
 		this.rigidbody.physicsTick()
 		this.rigidbody.apply(this.first)
 
-		this.first.draw(ctx)
-		this.second.draw(ctx)
+		this.first.draw(ctx, renderer)
+		this.second.draw(ctx, renderer)
 
 		ctx.beginPath()
 		ctx.moveTo(this.first.absx, this.first.absy)
